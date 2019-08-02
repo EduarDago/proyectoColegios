@@ -1,0 +1,381 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Planataforma de educación colegio la esperanza">
+  <meta name="author" content="INSUC">
+ 	
+	<title>{% block title %} La Esperanza {% endblock %}</title>
+  
+	<!-- CSS -->
+	{% block CSS %}
+	
+
+		<!-- Estilos para la página -->
+	
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'Includes/bootstrap4/css/bootstrap.min.css' %}"/>
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="{% static 'Includes/bootstrap4/css/mdb.min.css' %}"/>
+		<!-- DataTables.net -->
+    <link rel="stylesheet" type="text/css" href="{% static 'Includes/vendor/datatables/css/dataTables.bootstrap4.min.css' %}"/>
+		<!-- css select datatables--->
+		<link rel="stylesheet" type="text/css" href="{% static 'Includes/vendor/datatables/css/dataTables.checkboxes.css' %}"/>
+		<!-- Datatimepicker -->
+		<link rel="stylesheet" type="text/css" href="{% static 'Includes/bootstrap-datepicker/css/bootstrap-datepicker.min.css' %}"/>
+    <!-- Estilos propios -->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style3.css' %}" />
+		
+		
+		
+	{% endblock %}
+	
+	{% block NEWSCSS %}
+	
+	{% endblock %}
+	
+</head>
+
+<body class="fixed-sn light-blue-skin">
+	<!--Main Navigation-->
+	<header>
+			<!-- Sidebar navigation -->
+			<div id="slide-out" class="side-nav fixed sn-bg-4">
+					<ul class="custom-scrollbar list-unstyled">
+							<!-- Logo -->
+							<li class="logo-sn waves-effect">
+									<div class=" text-center">
+											<a href="#" class="pl-0">
+													<img src="{% static 'Image/index/logo.png'%}" class="">
+											</a>
+									</div>
+							</li>
+							<!--/. Logo -->
+							<br>
+							<!-- Side navigation links -->
+							<li>
+									<ul class="collapsible collapsible-accordion">
+											<li>
+													<a class="collapsible-header waves-effect arrow-r">
+															<i class="fa fa-chevron-right"></i> Profesores
+															<i class="fa fa-angle-down rotate-icon"></i>
+													</a>
+													<div class="collapsible-body">
+															<ul>
+																	<li>
+																			<a href="#" class="waves-effect">Ver Profesores</a>
+																	</li>
+																	<li>
+																			<a href="#" class="waves-effect">Tareas</a>
+																	</li>
+															</ul>
+													</div>
+											</li>
+											<li>
+													<a class="collapsible-header waves-effect arrow-r">
+															<i class="fa fa-hand-pointer-o"></i> Estudiantes
+															<i class="fa fa-angle-down rotate-icon"></i>
+													</a>
+													<div class="collapsible-body">
+															<ul>
+																	
+																	<li>
+																			<a href="#" class="waves-effect">Tareas</a>
+																	</li>
+																	<li>
+																			<a href="#" class="waves-effect">Proponer Actividad</a>
+																	</li>
+															</ul>
+													</div>
+											</li>
+											<li>
+													<a class="collapsible-header waves-effect arrow-r">
+															<i class="fa fa-eye"></i> Cursos
+															<i class="fa fa-angle-down rotate-icon"></i>
+													</a>
+													<div class="collapsible-body">
+															<ul class="collapsible collapsible-accordion">
+																	<!--li>
+																			<a href="{% url 'ConsultarCurso' %}" class="waves-effect">Ver Cursos</a>
+																	</li-->
+																	<li>																		
+																		<a class="collapsible-header waves-effect arrow-r">
+																				<i class="fa fa-terminal"></i> Matemáticas-10°
+																				<i class="fa fa-angle-down rotate-icon"></i>
+																		</a>
+																		<div class="collapsible-body">
+																			<ul>
+																				<li><a href="{% url 'GUIGestionContenidoCurso' 12 %}" class="waves-effect">10-C</a></li>
+																				<li><a href="{% url 'GUIGestionContenidoCurso' 3 %}" class="waves-effect">10-B</a></li>
+																			</ul>
+																		</div>
+																	</li>
+																
+																	<li>
+																		<a class="collapsible-header waves-effect arrow-r">
+																				<i class="fa fa-terminal"></i> Física-10°
+																				<i class="fa fa-angle-down rotate-icon"></i>
+																		</a>
+																		<div class="collapsible-body">
+																			<ul>
+																				<li><a href="{% url 'GUIGestionContenidoCurso' 2 %}" class="waves-effect">10-A</a></li>
+																			</ul>
+																		</div>
+																	</li>
+																	<li>
+																		<a class="collapsible-header waves-effect arrow-r">
+																				<i class="fa fa-terminal"></i> Química-10°
+																				<i class="fa fa-angle-down rotate-icon"></i>
+																		</a>
+																		<div class="collapsible-body">
+																			<ul>
+																				<li><a href="{% url 'GUIGestionContenidoCurso' 4 %}" class="waves-effect">10-A</a></li>
+																				<li><a href="{% url 'GUIGestionContenidoCurso' 5 %}" class="waves-effect">10-B</a></li>
+																			</ul>
+																		</div>
+																	</li>
+																	<!--li>
+																			<a href="#" class="waves-effect">Gestión</a>
+																	</li-->
+															</ul>
+													</div>
+											</li>
+											<li>
+													<a class="collapsible-header waves-effect arrow-r">
+															<i class="fa fa-envelope-o"></i> Materias
+															<i class="fa fa-angle-down rotate-icon"></i>
+													</a>
+													<div class="collapsible-body">
+															<ul>
+																	<li>
+																			<a href="{% url 'ConsultarMateria' %}" class="waves-effect">Ver Materias</a>
+																	</li>
+																	<li>
+																			<a href="#" class="waves-effect">Materia 2</a>
+																	</li>
+																	<li>
+																			<a href="#" class="waves-effect">Materia 3</a>
+																	</li>
+																	<li>
+																			<a href="#" class="waves-effect">Materia 4</a>
+																	</li>
+																	<li>
+																			<a href="#" class="waves-effect">Materia 5</a>
+																	</li>
+																	<li>
+																			<a href="#" class="waves-effect">Materia 6</a>
+																	</li>
+																	<li>
+																			<a href="#" class="waves-effect">Materia 7</a>
+																	</li>
+																	<li>
+																			<a href="#" class="waves-effect">Materia 8</a>
+																	</li>
+															</ul>
+													</div>
+											</li>
+									</ul>
+							</li>
+							<!--/. Side navigation links -->
+					</ul>
+
+					<!-- Mask -->
+					<div class="sidenav-bg mask-strong"></div>
+
+			</div>
+			<!--/. Sidebar navigation -->
+
+			<!-- Navbar -->
+			<nav class="navbar fixed-top navbar-expand-lg scrolling-navbar double-nav">
+				<!-- SideNav slide-out button -->
+				<div class="float-left">
+					<a href="#" data-activates="slide-out" class="button-collapse white-text"><i class="fa fa-bars"></i></a>
+				</div>
+				<!-- Breadcrumb-->
+				<div class="breadcrumb-dn mr-auto">
+					<div class="mr-auto">
+          	<ol class="header-breadcrumb breadcrumb fp-header-breadcrumb clearfix d-none d-md-inline-flex">
+								<li class="breadcrumb-item"><a href="#">Esperanza</a></li>
+								<!--li class="breadcrumb-item active">Profesores</li-->
+        		</ol>
+          </div>
+				</div>
+				<!--Navbar links-->
+				<ul class="nav navbar-nav nav-flex-icons ml-auto">
+					<!-- Dropdown -->
+					<li class="nav-item dropdown notifications-nav">
+						<a class="nav-link dropdown-toggle waves-effect" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													<span class="badge red">3 <i class="fa fa-bell"></i></span> 
+													<span class="d-none d-md-inline-block">Notificaciones</span>
+											</a>
+						<div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="#">
+															<i class="fa fa-money mr-2" aria-hidden="true"></i>
+															<span>Tarea Biologia</span>
+															<span class="float-right"><i class="fa fa-clock-o" aria-hidden="true"></i> 13 min</span>
+													</a>
+							<a class="dropdown-item" href="#">
+															<i class="fa fa-money mr-2" aria-hidden="true"></i>
+															<span>Tarea Quimica</span>
+															<span class="float-right"><i class="fa fa-clock-o" aria-hidden="true"></i> 33 min</span>
+													</a>
+							<a class="dropdown-item" href="#">
+															<i class="fa fa-line-chart mr-2" aria-hidden="true"></i>
+															<span>Tarea Filosofia</span>
+															<span class="float-right"><i class="fa fa-clock-o" aria-hidden="true"></i> 53 min</span>
+													</a>
+						</div>
+					</li>
+					
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle waves-effect" href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													<i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Perfil</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+							<a class="dropdown-item" href="#">Cerrar Sesión</a>
+							<a class="dropdown-item" href="#">Configuraciones</a>
+						</div>
+					</li>
+				</ul>
+				<!--/Navbar links-->
+			</nav>
+			<!-- /.Navbar -->
+
+	</header>
+	<!--Main Navigation-->
+
+	<!--Main layout-->
+	<main>
+			<div class="container-fluid">
+
+					<!--Section: Modals-->
+					<section>
+
+							<!--Modal: modalConfirmDelete-->
+							<div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+											<!--Content-->
+											<div class="modal-content text-center">
+													<!--Header-->
+													<div class="modal-header d-flex justify-content-center">
+															<p class="heading">Are you sure?</p>
+													</div>
+
+													<!--Body-->
+													<div class="modal-body">
+
+															<i class="fa fa-times fa-4x animated rotateIn"></i>
+
+													</div>
+
+													<!--Footer-->
+													<div class="modal-footer flex-center">
+															<a href="https://mdbootstrap.com/product/material-design-for-bootstrap-pro/" class="btn  btn-outline-secondary-modal">Yes</a>
+															<a type="button" class="btn  btn-primary-modal waves-effect" data-dismiss="modal">No</a>
+													</div>
+											</div>
+											<!--/.Content-->
+									</div>
+							</div>
+							<!--Modal: modalConfirmDelete-->
+
+					</section>
+					<!--Section: Modals-->
+
+					<!--Section: Main panel-->
+					<section>
+						<div class="card">
+							<div class="fondo" >
+							<!--img class="card-img" src="{% static 'Image/fondo/card.png' %}" alt="Card image"-->
+							{% block content %}
+
+
+							{% endblock %}
+							</div>
+						</div>							
+					</section>
+		
+				<!--Section: Main panel-->
+			</div>
+		
+	</main>
+	<!--Main layout-->
+
+	<!--Footer-->
+	<footer class="page-footer center-on-small-only">
+		
+		<!--Copyright-->
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-8 mx-auto text-center">
+					<h2 class="section-heading">Contactate con nosotros</h2>
+					<hr class="my-4">
+					<p class="mb-5">Dejanos Tener El Gusto de Atenderte.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 ml-auto text-center">
+					<i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
+					<p>123-456-6789</p>
+				</div>
+				<div class="col-lg-4 mr-auto text-center">
+					<i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
+					<p>
+						<a href="#">insuc@ucaldas.edu.co</a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<!--/.Copyright-->
+
+	</footer>
+	<!--/.Footer-->
+	
+	<!-- SCRIPTS -->
+	{% block SCRIPTS %}
+
+		<!-- SCRIPTS -->
+		<!-- JQuery -->
+		<script type="text/javascript" src="{% static 'Includes/jquery/jquery-3.2.1.min.js' %}"></script>
+		<!-- Bootstrap tooltips -->
+		<script type="text/javascript" src="{% static 'Includes/bootstrap4/js/popper.min.js' %}"></script>
+		<!-- Bootstrap core JavaScript -->
+		<script type="text/javascript" src="{% static 'Includes/bootstrap4/js/bootstrap.min.js' %}"></script>
+		<!-- MDB core JavaScript -->
+		<script type="text/javascript" src="{% static 'Includes/bootstrap4/js/mdb.min.js' %}"></script>
+
+		<!-- DataTables.net -->
+    <script type="text/javascript" src="{% static 'Includes/vendor/datatables/js/jquery.dataTables.min.js' %}"></script>
+		<!-- DataTables bootstrap-->
+    <script type="text/javascript" src="{% static 'Includes/vendor/datatables/js/dataTables.bootstrap4.min.js' %}"></script>
+		<!-- select Datatables -->
+		<script type="text/javascript" src="{% static 'Includes/vendor/datatables/js/dataTables.checkboxes.min.js' %}"></script>
+	
+		<!-- Inicialización datetimepicker -->
+		<script type="text/javascript" src="{% static 'Includes/bootstrap-datepicker/js/moment.js' %}"></script>
+		<!-- Idioma español de datetimepicker -->
+		<script type="text/javascript" src="{% static 'Includes/bootstrap-datepicker/locales/es.js' %}"></script>
+	
+		<script type="text/javascript" src="{% static 'Includes/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+		<!-- Inicialización Editor de texto -->
+		<script type="text/javascript" src="{% static 'Includes/vendor/tinymce/js/tinymce.min.js' %}"></script>
+		
+		
+		
+		<!-- Initializations -->
+		<script type="text/javascript" src="{% static 'js/javascriptbase.js' %}"></script>
+	
+	{% endblock %}
+	{% block NEWSCRIPTS %}
+	
+	{% endblock %}
+
+</body>
+
+</html>

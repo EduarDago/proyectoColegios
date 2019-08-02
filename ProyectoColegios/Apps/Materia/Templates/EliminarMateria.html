@@ -1,0 +1,30 @@
+{% extends 'base/base.html'%}
+
+{% block content %}
+
+<div class="card-body mb-5">
+	<div class="row">
+		<div class="col-xl-5 mx-auto">
+			<p class="h4 text-center py-4">Eliminar Materia</p>
+			<form method="post">
+				{% csrf_token %}
+				{{ form.as_p }}
+
+				<P class="text-center"><b>¿DESEA ELIMINAR LA MATERIA? <font style="text-transform: uppercase;">{{object.nombre}}</font></b></P>
+				<div class="text-center">	
+					<button class="btn btn-danger btn-rounded" type="submit">eliminar</button> 
+					<a class="btn btn-outline-danger waves-effect btn-rounded" href="{% url 'ConsultarMateria' %}">cancelar</a> 
+				</div>
+			</form>
+			{% if messages %}
+			<ul class="messages">
+				{% for message in messages %}
+				<li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+			
+		</div>
+	</div>
+</div>
+{% endblock %}

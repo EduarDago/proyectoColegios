@@ -1,0 +1,66 @@
+{% extends 'base/base.html'%}
+
+{% block title %}Consultar materias{% endblock %}
+
+{% block content %}
+	<div class="p-4">
+		<table id="datatables" class="table table-responsive-md table-fixed" cellspacing="0" width="100%">
+			<thead class="blue-grey lighten-4">
+				<tr>
+					<th>
+						Identificador
+					</th>
+					<th>
+						Nombre
+					</th>
+					<th>
+						Intensidad
+					</th>
+					<th>
+						Acción
+					</th>
+				</tr>
+			</thead>
+			<!--tfoot>
+				<tr>
+					<th>
+						Identificador
+					</th>
+					<th>
+						Nombre
+					</th>
+					<th>
+						Intensidad
+					</th>
+					<th>
+						Acción
+					</th>
+				</tr>
+			</tfoot-->
+			<tbody>
+				<form method="post">
+					{% csrf_token %}
+					{% for Materia in object_list %}
+					<tr>
+						<td>
+							{{Materia.id}}					
+						</td>
+						<td>
+							{{Materia.nombre}}					
+						</td>
+						<td>
+							{{Materia.intensidad}}					
+						</td>
+						<td>
+
+							<a class="btn-floating btn-sm green" href="{% url 'ActualizarMateria' Materia.id%}"> <i class="fa fa-pencil"></i></a>
+							&nbsp;
+							<a class="btn-floating btn-sm red" href="{% url 'EliminarMateria' Materia.id%}"> <i class="fa fa-trash"></i> </a>
+						</td>
+					</tr>
+					{% endfor %}
+				</form>
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

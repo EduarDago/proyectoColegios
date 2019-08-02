@@ -1,0 +1,37 @@
+{% extends 'base/base.html'%}
+{% load add_attr %}
+
+
+{% block title %}Registrar profesor{% endblock %}
+
+{% block content %}
+<div class="card-body mb-5">
+	<div class="row">
+		<div class="col-xl-5 mx-auto">
+			<!--p class="h4 card-header primary-color white-text text-center">Crear Profesor</p-->
+			<p class="h4 text-center py-4">Crear Profesor</p>
+			<form method="post">
+				{% csrf_token %}
+				{% for field in form %}
+					<div class="form-group">
+						<div class="md-form mb-0">
+							{{ Field.error_messages }} 
+							{{ field }}
+							{{ field.label_tag }} 
+							<small class="form-text text-muted">{{ field.help_text|safe }} </small>
+
+						</div>
+					</div>
+				{% endfor %}
+				<div class="form-group">
+					<div class="text-center py-4">	
+						<button  class="btn btn-mdb-color btn-rounded" type="submit">Crear</button> 
+						<a class="btn btn-outline-danger waves-effect btn-rounded" href="{% url 'listar' %}">Cancelar</a> 
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+

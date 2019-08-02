@@ -1,0 +1,48 @@
+{% extends 'base/base.html'%}
+
+{% block content %}
+	<table id="datatables" class="table table-responsive-md table-fixed" cellspacing="0" width="100%">
+		<thead class="blue-grey lighten-4">
+			<tr>
+				<th>
+					Código
+				</th>
+
+				<th>
+					Nombre
+				</th>
+
+				<th>
+					Apellido
+				</th>
+
+				<th >
+					Acción
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<form method="post">
+				{% csrf_token %}
+				{% for Estudiante in object_list %}
+				<tr>
+					<td>
+						{{Estudiante.codigo}}
+					</td>
+					<td>
+					 {{Estudiante.nombre}}
+					</td>
+					<td>
+						{{ Estudiante.apellido }}
+					</td>
+
+					<td>
+						<a class="btn-floating btn-sm green col-xs-6" href="{% url 'ActualizarEstudiante' Estudiante.codigo%}"> <i class="fa fa-pencil"></i></a>
+						<a class="btn-floating btn-sm red" href="{% url 'EliminarEstudiante' Estudiante.codigo%}"> <i class="fa fa-trash"></i> </a>
+					</td>
+				</tr>
+				{% endfor %}
+			</form>
+		</tbody>
+	</table>
+{% endblock %}

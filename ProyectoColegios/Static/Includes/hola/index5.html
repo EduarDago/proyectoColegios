@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Material Design Bootstrap</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="../bootstrap4/css/bootstrap.min.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="../bootstrap4/css/mdb.min.css">
+		<!-- hola munso -->
+		<link rel="stylesheet" href="../vendor/datatables/css/dataTables.bootstrap4.min.css">
+	
+		<link rel="stylesheet" href="../vendor/datatables/css/dataTables.checkboxes.css">
+    <!-- Your custom styles (optional) -->
+    <style>
+			body{
+				background-color: bisque;
+			}
+			input[type='checkbox'] {
+						position: sticky;
+			}
+    </style>
+</head>
+	<input type="text" value="hola">
+	<div>
+		<input class="form-check-input" type="checkbox" id="checkbox4">
+		<label class="form-check-label" for="checkbox4" class="label-table"></label>
+	</div>
+	<br>
+	
+	<form method="post" id="form" enctype="multipart/form-data">
+	
+	
+		<button  class="btn btn-mdb-color btn-rounded" type="submit">Guardar</button>
+		
+	</form>
+	
+	<br>
+	<table id="example" class="display" cellspacing="0" width="100%">
+   <thead>
+      <tr>
+         <th></th>
+         <th>Name</th>
+         <th>Position</th>
+         <th>Office</th>
+         <th>Extn.</th>
+         <th>Start date</th>
+         <th>Salary</th>
+      </tr>
+   </thead>
+   <tfoot>
+      <tr>
+         <th></th>
+         <th>Name</th>
+         <th>Position</th>
+         <th>Office</th>
+         <th>Extn.</th>
+         <th>Start date</th>
+         <th>Salary</th>
+      </tr>
+   </tfoot>
+</table>
+	
+<body>
+	
+	<!-- SCRIPTS -->
+	<!-- JQuery -->
+	<script src="../jquery/jquery-3.2.1.min.js"></script>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="../bootstrap4/js/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="../bootstrap4/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="../bootstrap4/js/mdb.min.js"></script>
+	<!-- -->
+	<script type="text/javascript" src="../vendor/datatables/js/datatables.min.js"></script>
+	<script type="text/javascript" src="../vendor/datatables/js/dataTables.checkboxes.min.js"></script>
+
+	<!-- TinyMCE -->
+	<script>
+
+	$(document).ready(function (){
+		/*
+			var table = $('#example').DataTable({
+				'ajax': 'https://www.gyrocode.com/lab/jquery-datatables-checkboxes/ids-arrays.txt',
+				'columnDefs': [
+					 {
+							'targets': 0,
+							'checkboxes': {
+								 'selectRow': true
+							}
+					 }
+				],
+				'select': {
+					 'style': 'multi'
+				},
+				'order': [[1, 'asc']]
+		 });
+			
+			$("checkboxSelector", table.fnGetNodes()).attr("checked", true); 
+			
+		*/
+		
+		$("#form" ).on('submit', function( event ){
+			alert( "Hello World" );
+			event.preventDefault();
+		});
+		
+		});
+
+		
+	</script>
+</body>

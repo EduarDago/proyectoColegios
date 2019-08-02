@@ -1,0 +1,130 @@
+{% extends 'base/base.html'%}
+{% load staticfiles %}
+
+
+{% block content %}
+		
+	<div class="text-center ">
+		<h3 class="text-center my-3 h3 pt-4 brown-text"> Tareas</h3>
+	</div>
+	<div class="container mb-5 pt-3">
+		<section class="wow fadeIn">
+
+				<!--Grid row-->
+				<div class="row text-left">
+						<!--Grid column-->
+						<div class="col-lg-2">
+							<img src="{% static 'Image/fondo/vertareas.png' %}" class="rounded mx-auto d-block img-fluid"/>
+						</div>
+						<!--Grid column-->
+
+						<!--Grid column-->
+						<div class="col-lg-10 col-md-12">							
+								<h4>
+									<strong>Título</strong>
+								</h4>
+								<p> {{ tarea.tituloTarea }}
+								</p>
+
+								<!--/Featured news-->
+
+								<hr>
+
+								<!--Small news-->
+								<div class="row">
+										<div class="col-md-3">
+											<h4><strong> Descripción </strong></h4>
+										</div>
+
+										<!--Excerpt-->
+										<div class="col-md-9">
+												{{ tarea.descripcionTarea|safe }}
+												
+										</div>
+
+								</div>
+								<!--/Small news-->
+							
+								<hr>
+								<!--Small news-->
+								<div class="row">
+										<div class="col-md-3">
+											<h4><strong> Logros </strong></h4>
+										</div>
+
+										<!--Excerpt-->
+										<div class="col-md-9">
+												<p> {{ tarea.logrosTarea }}
+
+												</p>
+										</div>
+
+								</div>
+								<!--/Small news-->
+								<hr>
+
+								<!--Small news-->
+								<div class="row">
+										<div class="col-md-3">
+											<h4><strong> Fecha entrega </strong></h4>
+										</div>
+
+										<!--Excerpt-->
+										<div class="col-md-9">
+												<p class="dark-grey-text">
+														<strong><i class="fa fa-clock-o"></i> {{ tarea.fechaLimite }}</strong>
+												</p>
+										</div>
+
+								</div>
+								<!--/Small news-->
+
+								<hr>
+
+								<!--Small news-->
+								<div class="row">
+										<div class="col-md-3">
+												<h4><strong>Tema</strong></h4>
+										</div>
+
+
+										<!--Excerpt-->
+										<div class="col-md-9">
+												<p> {{ tarea.foraneaTema }}
+												</p>
+										</div>
+
+								</div>
+								<!--/Small news-->
+								
+								<hr>
+								<!--Small news-->
+								<div class="row">
+										<div class="col-md-3">
+												<h4><strong>Archivos Adjuntos</strong></h4>
+										</div>
+
+										<!--Excerpt-->
+										<div class="col-md-9">
+												{% if tarea.rutaArchivo %}
+												<a href="{% url 'DescargarArchivo' tarea.idTarea %}" class="light-blue-text">
+													<h6>
+															<i class="fa fa-cloud-download"></i>
+															<strong> {{ tarea.filename }} </strong>
+													</h6>
+												</a>
+												{% endif%}
+										</div>
+
+								</div>
+								<!--/Small news-->
+
+						</div>
+						<!--Grid column-->
+
+				</div>
+				<!--Grid row-->
+
+		</section>
+	</div>
+{% endblock %}

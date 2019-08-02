@@ -1,0 +1,85 @@
+{% extends 'base/base.html'%}
+
+{% block content %}
+	<div class=" text-center pb-3">
+			<!--Titulo-->
+			<h2 class="text-center my-3 h1 pt-4"> Gestion del curso </h2>
+			<!--Grid row-->
+			<div class="row ">
+
+					<!--Grid column-->
+					<div class="col-lg-4 col-md-12 mb-4">
+						<h3 class="mb-2"><i class="fa fa-book"></i></h3>                                            
+						<a class="btn btn-warning btn-rounded">Material de estudio </a>
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<div class="col-lg-4 col-md-6 mb-4">                        
+							<h4 class="mb-2"><i class="fa fa-list-alt"></i></h4>
+							<a href="{% url 'CrearTarea' idCurso %}" class="btn btn-info btn-rounded">Subir tarea</a>
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<div class="col-lg-4 col-md-6 mb-4">                        
+							<h4 class="mb-2"><i class="fa fa-check-square-o"></i></h4>
+							<a class="btn btn-danger btn-rounded">Revisar tarea</a>
+					</div>
+					<!--Grid column-->
+
+			</div>
+			<!--Grid row-->
+
+	</div>
+	
+	<h3 class="text-center my-3 h3 pt-4"> Tareas del curso  </h3>
+	
+	<div class="container pb-4">
+		<table id="datatables" class="table table-responsive-md table-fixed" cellspacing="0" width="100%">
+			<thead class="blue-grey lighten-4">
+				<tr>
+					<th>
+						Identificador
+					</th>
+
+					<th>
+						tituloTarea
+					</th>
+
+					<th>
+						fechaLimite
+					</th>
+					<th >
+						Acción
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<form method="post">
+					{% csrf_token %}
+					{% for Tarea in tareas %}
+					<tr>
+						<td>
+							{{ Tarea.idTarea }}
+						</td>
+						<td>
+						 {{ Tarea.tituloTarea }}
+						</td>
+						<td>
+							{{ Tarea.fechaLimite }}
+						</td>
+
+						<td>
+							<a class="btn-floating btn-sm green" href=" Tarea.idTarea %}"> <i class="fa fa-pencil"></i> </a>
+							&nbsp;
+							<a class="btn-floating btn-sm red" href=" Tarea.idTarea %}"> <i class="fa fa-trash"></i> </a>
+						</td>
+					</tr>
+					{% endfor %}
+				</form>
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
+

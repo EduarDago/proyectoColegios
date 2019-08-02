@@ -1,0 +1,46 @@
+{% extends 'base/base.html'%}
+
+{% block content %}
+	<table id="datatables" class="table table-responsive-md table-fixed" cellspacing="0" width="100%">
+		<thead class="blue-grey lighten-4">
+			<tr>
+				<th>
+					Id
+				</th>
+				<th>
+					Estudiante
+				</th>
+
+				<th>
+					Materia
+				</th>				
+			</tr>
+		</thead>
+		<tbody>
+			<form method="post">
+				
+				{% csrf_token %}
+								
+				{% for Curso in object_list %}
+				<tr>
+					<td>
+						{{Curso.id}}
+					</td>
+					<td>
+					 {{Curso.idEstudiante}}
+					</td>
+					<td>
+						{{ Curso.idMateria }}
+					</td>
+
+					<td>
+						<a class="btn-floating btn-sm green col-xs-6" href="{% url 'ActualizarCurso' Curso.id %}"> <i class="fa fa-pencil"></i></a>
+						<a class="btn-floating btn-sm red" href="{% url 'EliminarCurso' Curso.id %}"> <i class="fa fa-trash"></i> </a>
+					</td>
+						
+				</tr>
+				{% endfor %}
+			</form>
+		</tbody>
+	</table>
+{% endblock %}

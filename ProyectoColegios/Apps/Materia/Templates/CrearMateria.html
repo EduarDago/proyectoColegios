@@ -1,0 +1,26 @@
+{% extends 'base/base.html'%}
+
+{% block title %}Crear Materia{% endblock %}
+
+{% block content %}
+<div class="card-body mb-5">
+	<div class="row">
+		<div class="col-xl-5 mx-auto">
+			<p class="h4 text-center py-4">Crear Materia</p>
+			<form method="post">
+				{% csrf_token %}
+			 	{% for field in form %}
+					<div class="md-form mb-0">
+						{{ field }}
+						{{ field.label_tag }} 
+					</div>
+				{% endfor %}
+			 	<div class="text-center py-4">	
+					<button  class="btn btn-mdb-color btn-rounded" type="submit">Crear</button> 
+					<a class="btn btn-outline-danger waves-effect btn-rounded" href="{% url 'ConsultarMateria' %}">Cancelar</a> 
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

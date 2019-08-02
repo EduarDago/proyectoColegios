@@ -1,0 +1,224 @@
+{% extends 'base/base.html'%}
+{% load staticfiles %}
+
+{% block content %}
+	<div class="container">
+				
+				{% if form.errors %}
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<strong>¡Error!</strong>
+						<ol>
+							<!--
+							{% comment  %}
+								{% for key,value in form.errors.items %} 
+								<li>{{ key.label_tag|escape }} : {{ value|escape }}</li>
+								{% endfor %}
+							{% endcomment %}
+							-->
+							{% for field in form %}
+								{% if field.errors %}
+									<li>{{ field.label_tag }} {{ field.errors }}</li>
+								{% endif %}
+							{% endfor %}
+						</ol>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				{% endif %}
+				
+				
+				<!-- Section: Create Page -->
+				<section class="section">
+						<div class="text-center pb-3">
+							<!--Titulo-->
+							<h2 class="h2-responsive text-center text-info my-3 h1 pt-2"> Crear Tareas </h2>
+						</div>
+						<!-- First row -->
+						
+						<form method="POST" id="form" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="row">										
+								<!-- primera col -->
+								<div class="col-lg-2">
+									<img src="{% static 'Image/fondo/tareas.png' %}" class="rounded mx-auto d-block"/>
+								</div>	
+								<!-- /.1primera col -->
+								
+								<!-- formulario de envio -->
+									<div class="col-lg-10">
+										<!-- First card -->
+										<div class="card mb-4 post-title-panel">
+											<div class="card-body">
+												<div class="row justify-content-center">
+													<div class="col-sm-6">
+														<div class=" md-form mt-1 mb-0">
+															{{ form.tituloTarea }}
+															{{ form.tituloTarea.label_tag }}
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- /.First card -->
+
+										<!-- Second card -->
+										<div class="card mb-4">
+											<div class="p-3">
+												{{ form.descripcionTarea.label_tag }}
+											</div>
+										 	{{ form.descripcionTarea }}	
+										</div>
+										<!-- /.Second card -->
+
+										<!-- Third Card -->
+										<div class="card mb-4">
+												<!-- Card botones -->
+												<div class="card-body pt-5">
+													<!--primer Row -->
+													<div class="row">
+														<div class="col-xl-6 col-md-12 mb-r">
+															<div class="md-form mb-0 mt-2">
+																<div class="file-field big">
+																		<a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+																				<i class="fa fa-paperclip" aria-hidden="true"></i>
+																				{{ form.rutaArchivo }}
+																		</a>
+																		<div class="file-path-wrapper">
+																			<input class="file-path validate" type="text" placeholder="Adjuntar archivo">
+																			{% for error in form.rutaArchivo.errors %}
+																				<p>error</p>
+																			{% endfor %}
+																		</div>
+																</div>
+														</div>
+														</div>
+														<div class="col-xl-6 col-md-12 mb-r">
+															<div class="md-form mt-1 mb-0">
+																<select name="foraneaTema" class="mdb-select colorful-select dropdown-ins initialized" id="id_foraneaTema">
+																	<option value="" selected="">---------</option>  
+																	{% if temasCurso %}
+																		{% for tema in temasCurso %}
+																			<option value="{{ tema.idTema }}"> {{ tema.nombreTema }}</option>
+																		{% endfor %}																																
+																	{% endif %}																	
+																</select>
+																{{ form.foraneaTema.label_tag }} 
+																
+															</div>
+															<!--select class="mdb-select colorful-select dropdown-ins">
+																<option value="1">Pensamiento Númerico</option>
+															</select>
+															<label>Tema</label-->
+														</div>
+													</div>
+													<!--Fin primer Row -->
+													<!--segundo  roe-->
+													<div class="row ml-4">
+														<div class="col-xl-6 col-md-12 mb-r">
+															<div class="md-form mb-0">
+																<div class="form-group">
+																		<div class="input-group date" id="datetimepicker1" data-target-input="nearest">												{{ form.fechaLimite.label_tag }}
+																				{{ form.fechaLimite}}
+																				<!--input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/-->
+																				<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+																						<div class="input-group-text default-color white-text "><i class="fa fa-calendar"></i></div>
+																				</div>
+																		</div>
+																</div>
+															</div>
+														</div>
+														<div class="col-xl-6 col-md-12 mb-r">
+															<div class="md-form mb-0 mt-2">
+																{{ form.logrosTarea }}
+																{{ form.logrosTarea.label_tag }}
+																<!--textarea type="text" id="form7" class="md-textarea form-control" rows="3"></textarea>
+																<label for="form7">Logros</label-->
+																
+														</div>
+														</div>
+														<div class="d-none"><input type="text" name="foraneaCurso" class="form-control" maxlength="50" required="" id="id_foraneaCurso" value="{{ idCurso }}">{{ idCurso }}</div>
+													</div>
+													
+													<!-- Accordion card -->
+													<div class="card">
+
+															<!-- Card header -->
+															<div class="card-header green lighten-5" role="tab" id="headingThree">
+																	<!-- Heading -->
+																	<a id="folder-3" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+																			<h5 class="mt-1 mb-0">
+																					<span>Estudiantes</span>
+																					<i class="fa fa-angle-down rotate-icon"></i>
+																			</h5>
+																	</a>
+															</div>
+
+															<!-- Card body -->
+															<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+																	<div class="card-body">
+																			<table id="example" class="table table-responsive-md table-fixed" cellspacing="0" width="100%">
+																				<thead class="blue-grey lighten-4">
+																					<tr>
+																						<th></th>
+
+																						<th>
+																							Código
+																						</th>
+																						<th>
+																							Nombre
+																						</th>
+																						<th>
+																							Apellido
+																						</th>				
+																					</tr>
+																				</thead>
+																				<tbody>
+																					
+																					{% for estudiantes in estudiantesCurso %}
+																						<tr>
+																							<td><input type="checkbox" id="{{ estudiantes.codigo }}"></td>
+																							<td>
+																								{{ estudiantes.codigo }}
+																							</td>
+																							<td>
+																							  {{ estudiantes.usuarioEstudiante.first_name }}
+																							</td>
+																							<td>
+																								{{ estudiantes.usuarioEstudiante.last_name }}
+																							</td>
+
+																						</tr>
+																					{% endfor %}
+																					
+																				</tbody>
+																			</table>
+																	</div>
+															</div>
+															<!-- End Card body -->
+													</div>
+													<!-- Accordion card -->
+													<div class="row">
+														<div class="col-xl-5 mx-auto">
+															<div class="text-center py-4">	
+																<button  class="btn btn-mdb-color btn-rounded" type="submit">Guardar</button> 
+																<a class="btn btn-outline-danger waves-effect btn-rounded" href="#">Cancelar</a> 
+															</div>
+														</div>
+													</div>
+												</div>
+										</div>
+								</div>
+								
+							</div>
+							
+					</form>
+						<!-- /.First row -->
+				</section>
+				<!-- /.Section: Create Page -->
+	</div>
+{% endblock %}
+
+{% block NEWSCRIPTS %}
+	<script type="text/javascript" src="{% static 'js/javascriptalterno.js' %}"></script>
+{% endblock %}
