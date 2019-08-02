@@ -1,0 +1,10 @@
+Realizar cambios respectivos del nuevo diseño de clases de análisis y
+de secuencia.
+
+Pruebas subir archivo.
+
+Realizar cambios en la interfaz frafica sugeridas por el usuario.
+
+Corregir las validaciones exigidas por el cliente.
+
+Probar dichas validaciones sugeridas por el cliente.

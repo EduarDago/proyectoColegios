@@ -1,0 +1,12 @@
+Esta entrega está conformada por:
+
+Pantallazos de Trello que muestren el seguimiento en las reuniones (cada dos días).
+Documento con:
+Criterios de aceptación y mockups de las historias de usuario seleccionadas para la iteración.
+Diagramas o modelos de diseño (dependiendo de lo que hayan planeado, pueden ser diagramas de clase, modelos de base de datos, etc.).
+Especificación de las pruebas.
+Resultados de las pruebas.
+Otros elementos que hayan contemplado en su planeación, diferentes a código (por ejemplo, pantallazo de análisis estático, manuales, etc.).
+Pantallazos de las funcionalidades desarrolladas.
+Enlace al repositorio donde está el código.
+Resultados de la retrospectiva (usar el formato que está en el campus virtual).
